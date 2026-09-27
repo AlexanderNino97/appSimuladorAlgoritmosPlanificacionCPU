@@ -1,0 +1,950 @@
+/* ==========================================================================
+   ESTILOS DE LA APLICACIÓN RETRO RPG: App.css
+   Layout Dividido: Sidebar Izquierda + Arena Derecha Espaciosa
+   ========================================================================== */
+
+.app-retro-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem 1.25rem 7.5rem 1.25rem; /* Margen para el dock inferior fijo */
+  gap: 1.25rem;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   1. ENCABEZADO SUPERIOR RETRO
+   -------------------------------------------------------------------------- */
+.retro-top-banner {
+  background: var(--bg-panel);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pixel-logo-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--retro-yellow);
+  border: var(--border-pixel-thin);
+  box-shadow: var(--shadow-pixel-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+.game-title {
+  font-family: var(--font-pixel);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.game-subtitle {
+  font-family: var(--font-rpg);
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.banner-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.retro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  background: var(--bg-panel-subtle);
+  border: var(--border-pixel-thin);
+  box-shadow: var(--shadow-pixel-sm);
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: var(--text-dark);
+}
+
+.retro-chip.accent-amber {
+  background: var(--retro-yellow-bg);
+  border-color: var(--retro-amber);
+}
+
+/* --------------------------------------------------------------------------
+   2. LAYOUT DIVIDIDO (SPLIT): SIDEBAR IZQUIERDA + ARENA DERECHA
+   -------------------------------------------------------------------------- */
+.dashboard-split-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* ==========================================================================
+   SIDEBAR LATERAL IZQUIERDA (CONFIGURACIÓN)
+   ========================================================================== */
+.sidebar-config-panel {
+  width: 360px;
+  flex-shrink: 0;
+  background: var(--bg-panel);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 9rem);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  border-bottom: 2px dashed #121212;
+  padding-bottom: 0.5rem;
+}
+
+.sidebar-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: var(--text-dark);
+}
+
+.sidebar-sublabel {
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* Presets en la Sidebar */
+.sidebar-presets-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: var(--bg-panel-subtle);
+  border: var(--border-pixel-thin);
+  padding: 0.6rem;
+}
+
+.presets-vertical-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+}
+
+.preset-pixel-btn {
+  padding: 0.4rem 0.5rem;
+  font-size: 0.6rem;
+  border: var(--border-pixel-thin);
+  background: #ffffff;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.preset-pixel-btn:hover {
+  background: var(--retro-yellow);
+}
+
+.preset-pixel-btn.btn-srtf {
+  background: var(--retro-red-bg);
+  border-color: var(--retro-red);
+}
+
+.preset-pixel-btn.btn-srtf:hover {
+  background: var(--retro-red);
+  color: #ffffff;
+}
+
+/* Quantum Box */
+.sidebar-quantum-box {
+  background: var(--retro-yellow-bg);
+  border: var(--border-pixel-thin);
+  box-shadow: var(--shadow-pixel-sm);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.quantum-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: var(--text-dark);
+}
+
+.quantum-input-field {
+  width: 70px;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 0.25rem;
+  text-align: center;
+  border: 2px solid #121212;
+  background: #ffffff;
+}
+
+/* Sección de Procesos Dinámicos */
+.sidebar-processes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.processes-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #121212;
+}
+
+.add-client-pixel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.62rem;
+  background: var(--retro-green);
+  color: #ffffff;
+  border: 2px solid #121212;
+  box-shadow: var(--shadow-pixel-sm);
+}
+
+.add-client-pixel-btn:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.sidebar-processes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.sidebar-proc-card {
+  background: var(--bg-panel-alt);
+  border: 2px solid #121212;
+  border-left: 5px solid var(--retro-cyan);
+  box-shadow: var(--shadow-pixel-sm);
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.proc-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.proc-avatar-icon {
+  font-size: 1rem;
+}
+
+.proc-id-text {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+}
+
+.vip-mini-tag {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  background: var(--retro-yellow);
+  border: 1px solid #000;
+  padding: 0.05rem 0.25rem;
+}
+
+.delete-proc-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #121212;
+  background: var(--bg-panel);
+  color: var(--text-dim);
+  padding: 0;
+}
+
+.delete-proc-btn:hover:not(:disabled) {
+  background: var(--retro-red);
+  color: #ffffff;
+}
+
+.proc-fields-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+}
+
+.field-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.field-label {
+  font-family: var(--font-pixel);
+  font-size: 0.52rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.field-input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem;
+  text-align: center;
+  border: 2px solid #121212;
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   ARENA DE SIMULACIÓN DERECHA (ESPACIOSA)
+   ========================================================================== */
+.main-simulation-arena {
+  flex: 1;
+  min-width: 0; /* Evita que el flexbox se desborde */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Podio en Vivo */
+.live-podium-card {
+  background: var(--retro-yellow-bg);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.podium-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+}
+
+.podium-rankings-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.podium-rank-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid #121212;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.podium-rank-badge.rank-1 {
+  background: var(--retro-yellow);
+  box-shadow: 2px 2px 0 #121212;
+  font-weight: 800;
+}
+
+/* Pila de Carriles */
+.lanes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.algorithm-lane-card {
+  background: var(--bg-lane);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.1s ease;
+}
+
+.algorithm-lane-card.leading-lane {
+  border-color: #000;
+  background: linear-gradient(to right, #ffffff, #fefae0);
+}
+
+/* Encabezado del Carril */
+.lane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #121212;
+}
+
+.lane-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.algo-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border: var(--border-pixel-thin);
+  background: var(--retro-cyan-bg);
+  box-shadow: var(--shadow-pixel-sm);
+  color: var(--text-dark);
+}
+
+.algo-badge.badge-srtf {
+  background: var(--retro-red-bg);
+}
+
+.algo-badge.badge-prio {
+  background: var(--retro-yellow-bg);
+}
+
+.algo-badge.badge-rr {
+  background: var(--retro-purple-bg);
+}
+
+.lane-name-text {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: var(--text-dark);
+}
+
+.lane-metrics-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.metric-pill {
+  font-family: var(--font-rpg);
+  font-size: 1.25rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--bg-panel-subtle);
+  border: 1px solid #121212;
+  color: var(--text-dark);
+}
+
+.metric-pill strong {
+  color: #000000;
+}
+
+.metric-pill.highlight {
+  background: var(--retro-yellow-bg);
+  border-color: var(--retro-amber);
+  font-weight: 700;
+}
+
+/* Alertas de Carril */
+.lane-alert-badge {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  padding: 0.25rem 0.55rem;
+  border: 2px solid #000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  animation: popIn 0.2s ease-out;
+}
+
+.lane-alert-badge.preempt {
+  background: var(--retro-red);
+  color: #ffffff;
+  animation: preemptionShake 0.4s ease-in-out;
+}
+
+.lane-alert-badge.quantum-exp {
+  background: var(--retro-purple);
+  color: #ffffff;
+}
+
+.lane-alert-badge.idle {
+  background: var(--bg-panel-subtle);
+  color: var(--text-dim);
+}
+
+/* 3 Etapas del Carril (Fila -> CPU -> Atendidos) */
+.lane-stages-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 290px 1.1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.stage-box {
+  background: var(--bg-panel-subtle);
+  border: var(--border-pixel-thin);
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 110px;
+}
+
+.stage-title {
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.queue-items-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.empty-stage-text {
+  font-family: var(--font-rpg);
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin: auto;
+}
+
+/* Token de Proceso (Personaje RPG) */
+.process-character-token {
+  padding: 0.35rem 0.55rem;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0 #121212;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  transition: transform 0.05s ease;
+}
+
+.process-character-token:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 3px 3px 0 #121212;
+  filter: brightness(1.05);
+}
+
+.token-icon {
+  font-size: 0.9rem;
+}
+
+.token-id {
+  font-weight: 800;
+  color: #121212;
+}
+
+.token-stat {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.1rem 0.3rem;
+}
+
+.token-vip-crown {
+  font-size: 0.75rem;
+}
+
+/* Ventanilla del Cajero (Caja CPU) */
+.stage-box.cpu-stage {
+  background: var(--bg-panel-alt);
+  border-width: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cashier-active-slot {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.cashier-teller-label {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-dark);
+}
+
+.hp-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hp-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: var(--text-dark);
+}
+
+.hp-bar-track {
+  height: 12px;
+  background: #ffffff;
+  border: 2px solid #121212;
+  overflow: hidden;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  background: var(--retro-green);
+  transition: width 0.15s ease-out;
+}
+
+.cashier-idle-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.idle-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--retro-green);
+  border: 1px solid #000;
+  display: inline-block;
+  animation: pixelBlink 1s infinite;
+}
+
+.idle-text {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: var(--text-dark);
+}
+
+/* Fila VIP en Prioridad */
+.vip-queue-subbox {
+  background: var(--retro-yellow-bg);
+  border: 2px solid var(--retro-amber);
+  padding: 0.4rem;
+  margin-bottom: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.vip-subbox-title {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: var(--retro-amber);
+  font-weight: 800;
+}
+
+/* Mini-Gantt */
+.mini-gantt-pixel-track {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  padding: 0.35rem;
+  background: var(--bg-panel-subtle);
+  border: 1px solid #121212;
+}
+
+.gantt-pixel-block {
+  min-width: 22px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: #121212;
+  font-weight: 800;
+  border: 1px solid #121212;
+  flex-shrink: 0;
+}
+
+.gantt-pixel-block.idle {
+  background: repeating-linear-gradient(
+    45deg,
+    #e2e8f0,
+    #e2e8f0 3px,
+    #f8fafc 3px,
+    #f8fafc 6px
+  );
+  color: #94a3b8;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTROLES MAESTROS Y RELOJ GLOBAL (DOCK FIJO INFERIOR)
+   -------------------------------------------------------------------------- */
+.master-controls-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-panel);
+  border-top: var(--border-pixel);
+  box-shadow: 0 -4px 0 #121212;
+  padding: 0.75rem 1.5rem;
+  z-index: 100;
+}
+
+.dock-content-wrapper {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Reloj Maestro */
+.master-clock-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #121212;
+  color: var(--retro-yellow);
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--retro-yellow);
+  box-shadow: 2px 2px 0 #121212;
+}
+
+.clock-icon {
+  font-size: 1.25rem;
+}
+
+.clock-main-text {
+  font-family: var(--font-pixel);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+
+.clock-status-pill {
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  padding: 0.2rem 0.4rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Botones de Control */
+.playback-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rpg-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.7rem;
+  border: var(--border-pixel-thin);
+  box-shadow: var(--shadow-pixel-sm);
+  background: #ffffff;
+}
+
+.rpg-ctrl-btn.play-btn {
+  background: var(--retro-green);
+  color: #ffffff;
+}
+
+.rpg-ctrl-btn.play-btn.pause-mode {
+  background: var(--retro-amber);
+  color: #ffffff;
+}
+
+/* Control de Velocidad */
+.speed-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 220px;
+}
+
+.speed-title {
+  font-family: var(--font-pixel);
+  font-size: 0.58rem;
+  color: var(--text-dark);
+}
+
+.speed-range {
+  width: 100%;
+  accent-color: #121212;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   4. MODAL DE ESTADÍSTICAS RPG DEL PERSONAJE
+   -------------------------------------------------------------------------- */
+.rpg-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(2px);
+  padding: 1rem;
+}
+
+.rpg-stat-window {
+  background: var(--bg-panel);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel-lg);
+  max-width: 440px;
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: popIn 0.15s ease-out;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #121212;
+  padding-bottom: 0.5rem;
+}
+
+.window-title {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: var(--text-dark);
+}
+
+.close-btn {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.character-sheet-body {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.character-portrait-box {
+  width: 72px;
+  height: 72px;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0 #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  flex-shrink: 0;
+}
+
+.character-details-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.char-name {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  color: #000;
+}
+
+.char-stat-line {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-rpg);
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.char-stat-line strong {
+  color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .dashboard-split-layout {
+    flex-direction: column;
+  }
+  .sidebar-config-panel {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+  .lane-stages-grid {
+    grid-template-columns: 1fr;
+  }
+  .dock-content-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .playback-buttons-group {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "app-simulador-algoritmos-cpu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simulador Didáctico de Algoritmos de Planificación de CPU con Metáfora Bancaria",
+  "scripts": {
+    "dev": "npm --prefix simulador run dev",
+    "build": "npm --prefix simulador run build",
+    "preview": "npm --prefix simulador run preview"
+  }
+}

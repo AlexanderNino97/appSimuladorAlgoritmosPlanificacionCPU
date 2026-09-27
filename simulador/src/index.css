@@ -1,0 +1,149 @@
+/* ==========================================================================
+   TEMA RETRO LIGHT: Pixel-Art & 8-Bit RPG Window Style
+   ========================================================================== */
+
+:root {
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-rpg: 'VT323', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Paleta Light Retro (Parchment & Sharp Pixel Contrast) */
+  --bg-page: #f8f5ee;
+  --bg-page-dots: #e5ded2;
+  --bg-panel: #ffffff;
+  --bg-panel-alt: #fefae0;
+  --bg-panel-subtle: #f1ede4;
+  --bg-lane: #ffffff;
+
+  --border-pixel: 3px solid #121212;
+  --border-pixel-thin: 2px solid #121212;
+  --shadow-pixel: 4px 4px 0 #121212;
+  --shadow-pixel-sm: 2px 2px 0 #121212;
+  --shadow-pixel-lg: 6px 6px 0 #121212;
+
+  --text-dark: #121212;
+  --text-muted: #4a4a4a;
+  --text-dim: #737373;
+
+  /* Colores Vivos Retro para Procesos y CPU */
+  --retro-cyan: #0284c7;
+  --retro-cyan-bg: #e0f2fe;
+  --retro-green: #16a34a;
+  --retro-green-bg: #dcfce7;
+  --retro-amber: #d97706;
+  --retro-amber-bg: #fef3c7;
+  --retro-purple: #9333ea;
+  --retro-purple-bg: #f3e8ff;
+  --retro-red: #dc2626;
+  --retro-red-bg: #fee2e2;
+  --retro-yellow: #facc15;
+  --retro-yellow-bg: #fef9c3;
+
+  --radius-pixel: 0px; /* Pixel-art puro usa esquinas rectas */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(circle, var(--bg-page-dots) 1px, transparent 1px);
+  background-size: 16px 16px;
+  color: var(--text-dark);
+  min-height: 100vh;
+  line-height: 1.4;
+  -webkit-font-smoothing: pixelated;
+  image-rendering: pixelated;
+  overflow-x: hidden;
+}
+
+/* Scrollbars Retro */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-panel-subtle);
+  border-left: 2px solid #121212;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border: 2px solid #121212;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--retro-yellow);
+}
+
+button {
+  font-family: var(--font-pixel);
+  cursor: pointer;
+  border: var(--border-pixel-thin);
+  background: #ffffff;
+  color: var(--text-dark);
+  box-shadow: var(--shadow-pixel-sm);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+  user-select: none;
+}
+
+button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 #121212;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+input, select {
+  font-family: var(--font-mono);
+  border: var(--border-pixel-thin);
+  background: #ffffff;
+  color: var(--text-dark);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+input:focus {
+  outline: none;
+  background: var(--retro-yellow-bg);
+  border-color: #000;
+}
+
+/* Animaciones Retro */
+@keyframes pixelBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes preemptionShake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-3px, 2px) rotate(-3deg); }
+  40% { transform: translate(3px, -2px) rotate(3deg); }
+  60% { transform: translate(-3px, -1px) rotate(-2deg); }
+  80% { transform: translate(2px, 1px) rotate(2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
